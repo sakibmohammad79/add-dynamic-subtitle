@@ -16,6 +16,8 @@ OUTPUT_TXT = "subtitles.txt"
 OUTPUT_SRT = "subtitles.srt"      
 OUTPUT_JSON = "subtitles.json"    
 
+SUBTITLE_DELAY = 1.2
+
 
 
 def format_srt_time(seconds):
@@ -152,8 +154,8 @@ def main():
         for segment in result['segments']:
             subtitles.append({
                 'text': segment['text'].strip(),
-                'start': round(segment['start'], 2),
-                'end': round(segment['end'], 2),
+                'start': round(segment['start'] + SUBTITLE_DELAY, 2),  
+                'end': round(segment['end'] + SUBTITLE_DELAY, 2),      
                 'duration': round(segment['end'] - segment['start'], 2)
             })
         

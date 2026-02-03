@@ -12,6 +12,7 @@ VIDEO_PATH = "Beautiful Recitation of Surah Infitar (سورة الانفطار_)
 SUBTITLE_FILE = "subtitles.txt"  
 OUTPUT_VIDEO = "output_with_subtitles.mp4"
 
+
 # Subtitle Styling
 FONT_SIZE = 30
 FONT_COLOR = 'white'
@@ -162,11 +163,10 @@ def add_subtitles_to_video(video_path, subtitles, output_path):
     
     for idx, sub in enumerate(subtitles, 1):
         try:
-            
             reshaped_text = arabic_reshaper.reshape(sub['text'])
             bidi_text = get_display(reshaped_text)
-            
-
+    
+    
             txt_clip = TextClip(
                 text=bidi_text,  
                 font_size=FONT_SIZE,
@@ -189,7 +189,7 @@ def add_subtitles_to_video(video_path, subtitles, output_path):
         except Exception as e:
             print(f"Error creating subtitle {idx}: {e}")
     
-    print(f"\n🎬 Compositing and Exporting...")
+    print(f"\n Compositing and Exporting...")
     final_video = CompositeVideoClip([video] + text_clips)
     
 
