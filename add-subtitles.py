@@ -21,7 +21,7 @@ STROKE_WIDTH = 1.5
 SUBTITLE_WIDTH_RATIO = 0.85
 SUBTITLE_POSITION_FROM_BOTTOM = 90
 
-# Font Path
+# Font Path fron pc
 FONT_PATH = r'C:\Windows\Fonts\Arial.ttf'
 
 # Video Export Settings
