@@ -11,12 +11,13 @@ SUBTITLE_FILE = "subtitles.txt"
 OUTPUT_VIDEO = "output_with_subtitles.mp4"
 
 # Subtitle Styling
-FONT_SIZE = 30
+FONT_SIZE = 34
 FONT_COLOR = 'white'
 STROKE_COLOR = 'black'
 STROKE_WIDTH = 1.5
 SUBTITLE_WIDTH_RATIO = 0.85
-SUBTITLE_POSITION_FROM_BOTTOM = 90
+SUBTITLE_POSITION_FROM_BOTTOM = 70
+EXTRA_VERTICAL_PADDING = 20
 
 # Font Path from pc
 FONT_PATH = r'C:\Windows\Fonts\Arial.ttf'
@@ -37,7 +38,6 @@ def read_txt_subtitles(filename):
     with open(filename, 'r', encoding='utf-8') as f:
         for line_num, line in enumerate(f, start=1):
             line = line.strip()
-            
           
             if not line or line.startswith('#'):
                 continue
@@ -163,7 +163,6 @@ def add_subtitles_to_video(video_path, subtitles, output_path):
             reshaped_text = arabic_reshaper.reshape(sub['text'])
             bidi_text = get_display(reshaped_text)
     
-    
             txt_clip = TextClip(
                 text=bidi_text,  
                 font_size=FONT_SIZE,
@@ -172,10 +171,14 @@ def add_subtitles_to_video(video_path, subtitles, output_path):
                 method='caption',
                 size=(int(video.w * SUBTITLE_WIDTH_RATIO), None),
                 stroke_color=STROKE_COLOR,
-                stroke_width=STROKE_WIDTH
+                stroke_width=STROKE_WIDTH,
+                # align='center',      
+                interline=-3,        
             )
             
-            pos = ('center', video.h - txt_clip.h - SUBTITLE_POSITION_FROM_BOTTOM)
+            #  Extra padding for harakat 
+            extra_padding = 20
+            pos = ('center', video.h - txt_clip.h - SUBTITLE_POSITION_FROM_BOTTOM - extra_padding)
             
             txt_clip = (txt_clip.with_start(sub['start'])
                                .with_duration(sub['end'] - sub['start'])
@@ -189,7 +192,6 @@ def add_subtitles_to_video(video_path, subtitles, output_path):
     print(f"\n Compositing and Exporting...")
     final_video = CompositeVideoClip([video] + text_clips)
     
-
     final_video.write_videofile(
         output_path,
         codec=VIDEO_CODEC,
@@ -203,8 +205,6 @@ def add_subtitles_to_video(video_path, subtitles, output_path):
     video.close()
     final_video.close()
     return True
-
-
 
 
 def main():
@@ -233,7 +233,7 @@ def main():
                 print(f"   - {file}")
         return
     
-    print(f"✅ Loaded {len(subtitles)} subtitles")
+    print(f"Loaded {len(subtitles)} subtitles")
     
     # Preview first subtitle
     if subtitles:
@@ -267,12 +267,10 @@ def main():
             
             print("\n" + "="*70)
             print("SUCCESS! Video with subtitles created!")
-            print("="*70)
-            print(f"\n📹 Output: {OUTPUT_VIDEO}")
+            print(f"\n Output: {OUTPUT_VIDEO}")
             print(f"   Size: {file_size:.2f} MB")
             print(f"   Subtitles: {len(subtitles)} segments")
-            print("\n🎉 Your subtitled video is ready!")
-            print("="*70)
+            print("\n Your subtitled video is ready!")
         else:
             print("\nFailed to create video")
             
