@@ -17,6 +17,8 @@ OUTPUT_SRT = "subtitles.srt"
 OUTPUT_JSON = "subtitles.json"    
 
 SUBTITLE_DELAY = 1.2
+WORD_LEVEL = True
+MAX_WORD_PER_SUBTITLE = 2
 
 
 
@@ -67,11 +69,11 @@ def transcribe_with_whisper(audio_file, language, task):
         initial_prompt="A clear English translation of Quranic recitation.",
         no_speech_threshold=0.6,
         condition_on_previous_text=False,
-        verbose=False
+        word_timestamps=WORD_LEVEL
     )
     
     print(f"Transcription complete!")
-    print(f"   Detected {len(result['segments'])} subtitle segments")
+    print(f"Detected {len(result['segments'])} subtitle segments")
     
     return result
 

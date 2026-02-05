@@ -1,5 +1,3 @@
-
-
 from moviepy import VideoFileClip, TextClip, CompositeVideoClip
 import json
 import os
@@ -11,7 +9,6 @@ from bidi.algorithm import get_display
 VIDEO_PATH = "Beautiful Recitation of Surah Infitar (سورة الانفطار_).mp4"
 SUBTITLE_FILE = "subtitles.txt"  
 OUTPUT_VIDEO = "output_with_subtitles.mp4"
-
 
 # Subtitle Styling
 FONT_SIZE = 30
