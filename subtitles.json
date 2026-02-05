@@ -1,122 +1,542 @@
 [
   {
-    "text": "أعوذ بالله من الشيطان الرجيم",
+    "text": "أعوذ",
     "start": 1.2,
-    "end": 8.0,
-    "duration": 6.8
+    "end": 1.96,
+    "duration": 0.76
   },
   {
-    "text": "بسم الله الرحمن الرحيم",
+    "text": "بالله",
+    "start": 1.96,
+    "end": 2.98,
+    "duration": 1.02
+  },
+  {
+    "text": "من",
+    "start": 2.98,
+    "end": 3.4,
+    "duration": 0.42
+  },
+  {
+    "text": "الشيطان",
+    "start": 3.4,
+    "end": 4.92,
+    "duration": 1.52
+  },
+  {
+    "text": "الرجيم",
+    "start": 4.92,
+    "end": 7.14,
+    "duration": 2.22
+  },
+  {
+    "text": "بسم",
     "start": 8.0,
-    "end": 14.69,
-    "duration": 5.76
+    "end": 9.3,
+    "duration": 1.3
   },
   {
-    "text": "إذا السماء انفطرت",
-    "start": 13.76,
-    "end": 22.4,
-    "duration": 8.64
+    "text": "الله",
+    "start": 9.3,
+    "end": 9.92,
+    "duration": 0.62
   },
   {
-    "text": "وإذا الكواكب انتثرت",
-    "start": 22.4,
-    "end": 28.26,
-    "duration": 5.86
+    "text": "الرحمن",
+    "start": 9.92,
+    "end": 11.62,
+    "duration": 1.7
   },
   {
-    "text": "وإذا البحار فجرت",
-    "start": 28.26,
-    "end": 32.56,
-    "duration": 4.3
+    "text": "الرحيم",
+    "start": 11.62,
+    "end": 12.9,
+    "duration": 1.28
   },
   {
-    "text": "وإذا القبور بعثرت",
-    "start": 32.56,
-    "end": 36.8,
-    "duration": 4.24
+    "text": "إذا",
+    "start": 17.2,
+    "end": 18.6,
+    "duration": 1.4
   },
   {
-    "text": "علمت نفس ما قدمت وأخرت",
-    "start": 36.8,
-    "end": 44.16,
-    "duration": 7.36
+    "text": "السماء",
+    "start": 18.6,
+    "end": 20.0,
+    "duration": 1.4
   },
   {
-    "text": "يا أيها الإنسان ما غرك بربك الكريم",
-    "start": 44.16,
-    "end": 55.3,
-    "duration": 11.14
+    "text": "انفطرت",
+    "start": 20.0,
+    "end": 22.14,
+    "duration": 2.14
   },
   {
-    "text": "الذي خلقك فسواك فعدلك في أي صورة ما شاء ركبك",
-    "start": 55.3,
-    "end": 69.46,
-    "duration": 14.16
+    "text": "وإذا",
+    "start": 22.14,
+    "end": 23.96,
+    "duration": 1.82
   },
   {
-    "text": "كلا بل تكذبون بالدين",
-    "start": 69.46,
-    "end": 75.62,
-    "duration": 6.16
+    "text": "الكواكب",
+    "start": 23.96,
+    "end": 25.3,
+    "duration": 1.34
   },
   {
-    "text": "وإن عليكم لحافذين",
-    "start": 75.62,
-    "end": 82.56,
-    "duration": 6.94
+    "text": "انتثرت",
+    "start": 25.3,
+    "end": 28.06,
+    "duration": 2.76
   },
   {
-    "text": "كراما كاتبين",
-    "start": 82.56,
-    "end": 88.92,
-    "duration": 6.36
+    "text": "وإذا",
+    "start": 28.06,
+    "end": 30.06,
+    "duration": 2.0
   },
   {
-    "text": "يعلمون ما تفعلون",
-    "start": 88.92,
-    "end": 94.68,
-    "duration": 5.76
+    "text": "البحار",
+    "start": 30.06,
+    "end": 31.22,
+    "duration": 1.16
   },
   {
-    "text": "إن الأبرار لفي نعيم",
-    "start": 94.68,
-    "end": 102.16,
-    "duration": 7.48
+    "text": "فجرت",
+    "start": 31.22,
+    "end": 32.28,
+    "duration": 1.06
   },
   {
-    "text": "وإن الفجار لفي جحيم",
+    "text": "وإذا",
+    "start": 32.28,
+    "end": 34.22,
+    "duration": 1.94
+  },
+  {
+    "text": "القبور",
+    "start": 34.22,
+    "end": 35.4,
+    "duration": 1.18
+  },
+  {
+    "text": "بعثرت",
+    "start": 35.4,
+    "end": 36.52,
+    "duration": 1.12
+  },
+  {
+    "text": "علمت",
+    "start": 36.52,
+    "end": 38.26,
+    "duration": 1.74
+  },
+  {
+    "text": "نفس",
+    "start": 38.26,
+    "end": 38.96,
+    "duration": 0.7
+  },
+  {
+    "text": "ما",
+    "start": 38.96,
+    "end": 40.02,
+    "duration": 1.06
+  },
+  {
+    "text": "قدمت",
+    "start": 40.02,
+    "end": 42.6,
+    "duration": 2.58
+  },
+  {
+    "text": "وأخرت",
+    "start": 42.6,
+    "end": 43.92,
+    "duration": 1.32
+  },
+  {
+    "text": "يا",
+    "start": 43.92,
+    "end": 45.22,
+    "duration": 1.3
+  },
+  {
+    "text": "أيها",
+    "start": 45.22,
+    "end": 47.8,
+    "duration": 2.58
+  },
+  {
+    "text": "الإنسان",
+    "start": 47.8,
+    "end": 50.18,
+    "duration": 2.38
+  },
+  {
+    "text": "ما",
+    "start": 50.18,
+    "end": 50.5,
+    "duration": 0.32
+  },
+  {
+    "text": "غرك",
+    "start": 50.5,
+    "end": 51.46,
+    "duration": 0.96
+  },
+  {
+    "text": "بربك",
+    "start": 51.46,
+    "end": 52.88,
+    "duration": 1.42
+  },
+  {
+    "text": "الكريم",
+    "start": 52.88,
+    "end": 55.0,
+    "duration": 2.12
+  },
+  {
+    "text": "الذي",
+    "start": 55.0,
+    "end": 57.02,
+    "duration": 2.02
+  },
+  {
+    "text": "خلقك",
+    "start": 57.02,
+    "end": 58.24,
+    "duration": 1.22
+  },
+  {
+    "text": "فسواك",
+    "start": 58.24,
+    "end": 59.52,
+    "duration": 1.28
+  },
+  {
+    "text": "فعدلك",
+    "start": 59.52,
+    "end": 60.6,
+    "duration": 1.08
+  },
+  {
+    "text": "في",
+    "start": 60.6,
+    "end": 61.06,
+    "duration": 0.46
+  },
+  {
+    "text": "أي",
+    "start": 61.06,
+    "end": 62.88,
+    "duration": 1.82
+  },
+  {
+    "text": "صورة",
+    "start": 62.88,
+    "end": 64.16,
+    "duration": 1.28
+  },
+  {
+    "text": "ما",
+    "start": 64.16,
+    "end": 65.1,
+    "duration": 0.94
+  },
+  {
+    "text": "شاء",
+    "start": 65.1,
+    "end": 67.4,
+    "duration": 2.3
+  },
+  {
+    "text": "ركبك",
+    "start": 67.4,
+    "end": 69.3,
+    "duration": 1.9
+  },
+  {
+    "text": "كلا",
+    "start": 69.3,
+    "end": 70.72,
+    "duration": 1.42
+  },
+  {
+    "text": "بل",
+    "start": 70.72,
+    "end": 71.6,
+    "duration": 0.88
+  },
+  {
+    "text": "تكذبون",
+    "start": 71.6,
+    "end": 73.08,
+    "duration": 1.48
+  },
+  {
+    "text": "بالدين",
+    "start": 73.08,
+    "end": 75.22,
+    "duration": 2.14
+  },
+  {
+    "text": "وإن",
+    "start": 75.22,
+    "end": 77.72,
+    "duration": 2.5
+  },
+  {
+    "text": "عليكم",
+    "start": 77.72,
+    "end": 79.48,
+    "duration": 1.76
+  },
+  {
+    "text": "لحافذين",
+    "start": 79.48,
+    "end": 81.88,
+    "duration": 2.4
+  },
+  {
+    "text": "كراما",
+    "start": 81.88,
+    "end": 84.32,
+    "duration": 2.44
+  },
+  {
+    "text": "كاتبين",
+    "start": 84.32,
+    "end": 88.36,
+    "duration": 4.04
+  },
+  {
+    "text": "يعلمون",
+    "start": 88.9,
+    "end": 91.16,
+    "duration": 2.26
+  },
+  {
+    "text": "ما",
+    "start": 91.16,
+    "end": 91.56,
+    "duration": 0.4
+  },
+  {
+    "text": "تفعلون",
+    "start": 91.56,
+    "end": 94.2,
+    "duration": 2.64
+  },
+  {
+    "text": "إن",
+    "start": 94.72,
+    "end": 96.2,
+    "duration": 1.48
+  },
+  {
+    "text": "الأبرار",
+    "start": 96.2,
+    "end": 98.78,
+    "duration": 2.58
+  },
+  {
+    "text": "لفي",
+    "start": 98.78,
+    "end": 99.44,
+    "duration": 0.66
+  },
+  {
+    "text": "نعيم",
+    "start": 99.44,
+    "end": 101.58,
+    "duration": 2.14
+  },
+  {
+    "text": "وإن",
     "start": 102.16,
-    "end": 110.3,
-    "duration": 8.14
+    "end": 104.06,
+    "duration": 1.9
   },
   {
-    "text": "يصلونها يوم الدين وما هم عنها بغائبين",
-    "start": 110.3,
-    "end": 120.48,
-    "duration": 10.18
+    "text": "الفجار",
+    "start": 104.06,
+    "end": 107.08,
+    "duration": 3.02
   },
   {
-    "text": "وما أدراك ما يوم الدين",
-    "start": 120.48,
-    "end": 128.08,
-    "duration": 7.6
+    "text": "لفي",
+    "start": 107.08,
+    "end": 107.8,
+    "duration": 0.72
   },
   {
-    "text": "ثم ما أدراك ما يوم الدين",
-    "start": 128.08,
-    "end": 137.78,
-    "duration": 9.7
+    "text": "جحيم",
+    "start": 107.8,
+    "end": 109.08,
+    "duration": 1.28
   },
   {
-    "text": "يوم لا تملك نفس لنفس شيئا",
-    "start": 137.78,
-    "end": 145.86,
-    "duration": 8.08
+    "text": "يصلونها",
+    "start": 111.3,
+    "end": 112.7,
+    "duration": 1.4
   },
   {
-    "text": "والأمر يومئذ لله",
-    "start": 145.86,
-    "end": 151.46,
-    "duration": 5.6
+    "text": "يوم",
+    "start": 112.7,
+    "end": 113.64,
+    "duration": 0.94
+  },
+  {
+    "text": "الدين",
+    "start": 113.64,
+    "end": 114.58,
+    "duration": 0.94
+  },
+  {
+    "text": "وما",
+    "start": 114.58,
+    "end": 115.18,
+    "duration": 0.6
+  },
+  {
+    "text": "هم",
+    "start": 115.18,
+    "end": 115.92,
+    "duration": 0.74
+  },
+  {
+    "text": "عنها",
+    "start": 115.92,
+    "end": 116.76,
+    "duration": 0.84
+  },
+  {
+    "text": "بغائبين",
+    "start": 116.76,
+    "end": 120.1,
+    "duration": 3.34
+  },
+  {
+    "text": "وما",
+    "start": 120.1,
+    "end": 122.06,
+    "duration": 1.96
+  },
+  {
+    "text": "أدراك",
+    "start": 122.06,
+    "end": 124.54,
+    "duration": 2.48
+  },
+  {
+    "text": "ما",
+    "start": 124.54,
+    "end": 124.88,
+    "duration": 0.34
+  },
+  {
+    "text": "يوم",
+    "start": 124.88,
+    "end": 125.8,
+    "duration": 0.92
+  },
+  {
+    "text": "الدين",
+    "start": 125.8,
+    "end": 127.42,
+    "duration": 1.62
+  },
+  {
+    "text": "ثم",
+    "start": 128.88,
+    "end": 130.28,
+    "duration": 1.4
+  },
+  {
+    "text": "ما",
+    "start": 130.28,
+    "end": 131.38,
+    "duration": 1.1
+  },
+  {
+    "text": "أدراك",
+    "start": 131.38,
+    "end": 134.02,
+    "duration": 2.64
+  },
+  {
+    "text": "ما",
+    "start": 134.02,
+    "end": 134.3,
+    "duration": 0.28
+  },
+  {
+    "text": "يوم",
+    "start": 134.3,
+    "end": 135.2,
+    "duration": 0.9
+  },
+  {
+    "text": "الدين",
+    "start": 135.2,
+    "end": 136.98,
+    "duration": 1.78
+  },
+  {
+    "text": "يوم",
+    "start": 136.98,
+    "end": 139.42,
+    "duration": 2.44
+  },
+  {
+    "text": "لا",
+    "start": 139.42,
+    "end": 139.76,
+    "duration": 0.34
+  },
+  {
+    "text": "تملك",
+    "start": 139.76,
+    "end": 140.86,
+    "duration": 1.1
+  },
+  {
+    "text": "نفس",
+    "start": 140.86,
+    "end": 141.5,
+    "duration": 0.64
+  },
+  {
+    "text": "لنفس",
+    "start": 141.5,
+    "end": 142.62,
+    "duration": 1.12
+  },
+  {
+    "text": "شيئا",
+    "start": 142.62,
+    "end": 145.64,
+    "duration": 3.02
+  },
+  {
+    "text": "والأمر",
+    "start": 145.64,
+    "end": 147.72,
+    "duration": 2.08
+  },
+  {
+    "text": "يومئذ",
+    "start": 147.72,
+    "end": 148.9,
+    "duration": 1.18
+  },
+  {
+    "text": "لله",
+    "start": 148.9,
+    "end": 150.28,
+    "duration": 1.38
   }
 ]

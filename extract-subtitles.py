@@ -7,7 +7,7 @@ import sys
 VIDEO_PATH = "Beautiful Recitation of Surah Infitar (سورة الانفطار_).mp4"
 
 # Whisper Settings
-WHISPER_MODEL = "large-v3"  # Options: tiny, base, small, medium, large, large-v3
+WHISPER_MODEL = "large-v3"
 LANGUAGE = "ar"            
 TASK = "transcribe"          
 
@@ -16,10 +16,10 @@ OUTPUT_TXT = "subtitles.txt"
 OUTPUT_SRT = "subtitles.srt"      
 OUTPUT_JSON = "subtitles.json"    
 
+# ⭐ Subtitle Settings
 SUBTITLE_DELAY = 1.2
-WORD_LEVEL = True
-MAX_WORD_PER_SUBTITLE = 2
-
+WORD_LEVEL = True  
+MAX_WORDS_PER_SUBTITLE = 2 
 
 
 def format_srt_time(seconds):
@@ -32,10 +32,8 @@ def format_srt_time(seconds):
 
 
 def extract_audio_from_video(video_path):
-    
     video = VideoFileClip(video_path)
     audio_file = "temp_audio.wav"
-    
     
     video.audio.write_audiofile(
         audio_file, 
@@ -60,22 +58,102 @@ def transcribe_with_whisper(audio_file, language, task):
     print(f"\n Transcribing audio...")
     print(f"   Language: {language}")
     print(f"   Task: {task}")
+    print(f"   Word-level timestamps: {WORD_LEVEL}")
     print("   This may take several minutes...")
     
     result = model.transcribe(
         audio_file,
         language=language,
         task=task,
+        word_timestamps=WORD_LEVEL,  # ⭐ Enable word-level
         initial_prompt="A clear English translation of Quranic recitation.",
         no_speech_threshold=0.6,
         condition_on_previous_text=False,
-        word_timestamps=WORD_LEVEL
+        verbose=False
     )
     
     print(f"Transcription complete!")
-    print(f"Detected {len(result['segments'])} subtitle segments")
+    print(f"   Detected {len(result['segments'])} subtitle segments")
     
     return result
+
+
+def split_text_into_phrases(text, max_words):
+    """Split text into phrases of max_words"""
+    words = text.strip().split()
+    phrases = []
+    
+    for i in range(0, len(words), max_words):
+        phrase = ' '.join(words[i:i+max_words])
+        phrases.append(phrase)
+    
+    return phrases
+
+
+def process_word_level_subtitles(result, delay):
+    """Process word-by-word subtitles"""
+    print(f"\n Processing WORD-LEVEL subtitles...")
+    subtitles = []
+    
+    for segment in result['segments']:
+        if 'words' in segment and segment['words']:
+            for word in segment['words']:
+                subtitles.append({
+                    'text': word['word'].strip(),
+                    'start': round(word['start'] + delay, 2),
+                    'end': round(word['end'] + delay, 2),
+                    'duration': round(word['end'] - word['start'], 2)
+                })
+        else:
+            # Fallback if no word timestamps
+            subtitles.append({
+                'text': segment['text'].strip(),
+                'start': round(segment['start'] + delay, 2),
+                'end': round(segment['end'] + delay, 2),
+                'duration': round(segment['end'] - segment['start'], 2)
+            })
+    
+    return subtitles
+
+
+def process_phrase_level_subtitles(result, delay, max_words):
+    """Process phrase-level subtitles (2-3 words per subtitle)"""
+    print(f"\n Processing PHRASE-LEVEL subtitles ({max_words} words per subtitle)...")
+    subtitles = []
+    
+    for segment in result['segments']:
+        phrases = split_text_into_phrases(segment['text'], max_words)
+        duration = segment['end'] - segment['start']
+        time_per_phrase = duration / len(phrases)
+        
+        for i, phrase in enumerate(phrases):
+            start = segment['start'] + (i * time_per_phrase)
+            end = start + time_per_phrase
+            
+            subtitles.append({
+                'text': phrase,
+                'start': round(start + delay, 2),
+                'end': round(end + delay, 2),
+                'duration': round(time_per_phrase, 2)
+            })
+    
+    return subtitles
+
+
+def process_full_segment_subtitles(result, delay):
+    """Process full segment subtitles (original Whisper segments)"""
+    print(f"\n Processing FULL SEGMENT subtitles...")
+    subtitles = []
+    
+    for segment in result['segments']:
+        subtitles.append({
+            'text': segment['text'].strip(),
+            'start': round(segment['start'] + delay, 2),
+            'end': round(segment['end'] + delay, 2),
+            'duration': round(segment['end'] - segment['start'], 2)
+        })
+    
+    return subtitles
 
 
 def save_txt_format(subtitles, filename):
@@ -116,7 +194,7 @@ def save_json_format(subtitles, filename):
     print(f" Saved: {filename}")
 
 
-def preview_subtitles(subtitles, count=5):
+def preview_subtitles(subtitles, count=10):
     """Show preview of first few subtitles"""
     print("\n" + "="*70)
     print(f"SUBTITLE PREVIEW (First {count} of {len(subtitles)})")
@@ -149,17 +227,15 @@ def main():
         # Step 2: Transcribe with Whisper
         result = transcribe_with_whisper(audio_file, LANGUAGE, TASK)
         
-        # Step 3: Process subtitles
-        print(f"\n Processing {len(result['segments'])} segments...")
+        # Step 3: Process subtitles based on WORD_LEVEL setting
+        if WORD_LEVEL:
+            subtitles = process_word_level_subtitles(result, SUBTITLE_DELAY)
+        else:
+            #  phrase-level or full segment
+            # subtitles = process_phrase_level_subtitles(result, SUBTITLE_DELAY, MAX_WORDS_PER_SUBTITLE)
+            subtitles = process_full_segment_subtitles(result, SUBTITLE_DELAY)
         
-        subtitles = []
-        for segment in result['segments']:
-            subtitles.append({
-                'text': segment['text'].strip(),
-                'start': round(segment['start'] + SUBTITLE_DELAY, 2),  
-                'end': round(segment['end'] + SUBTITLE_DELAY, 2),      
-                'duration': round(segment['end'] - segment['start'], 2)
-            })
+        print(f"✅ Created {len(subtitles)} subtitles")
         
         # Step 4: Preview
         preview_subtitles(subtitles)
@@ -177,7 +253,13 @@ def main():
             print(f"Removed: {audio_file}")
         
         # Success message
+        print("\n" + "="*70)
         print("SUCCESS! Subtitles extracted and saved!")
+        print("="*70)
+        print(f"Mode: {'WORD-LEVEL' if WORD_LEVEL else 'SEGMENT-LEVEL'}")
+        print(f"Total subtitles: {len(subtitles)}")
+        print(f"Delay applied: {SUBTITLE_DELAY}s")
+        print("="*70)
         
     except Exception as e:
         print(f"\nError occurred: {e}")
