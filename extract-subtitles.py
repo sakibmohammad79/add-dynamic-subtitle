@@ -3,6 +3,7 @@ import whisper
 import json
 import os
 import sys
+from mishkal.tashkeel import TashkeelClass
 
 VIDEO_PATH = "Beautiful Recitation of Surah Infitar (سورة الانفطار_).mp4"
 
@@ -16,10 +17,23 @@ OUTPUT_TXT = "subtitles.txt"
 OUTPUT_SRT = "subtitles.srt"      
 OUTPUT_JSON = "subtitles.json"    
 
-# ⭐ Subtitle Settings
+
 SUBTITLE_DELAY = 1.2
 WORD_LEVEL = True  
 MAX_WORDS_PER_SUBTITLE = 2 
+ADD_HARAKAT = True
+
+def add_arabic_harakat(text):
+    """Add harakat (tashkeel) to plain Arabic text"""
+    if not ADD_HARAKAT:
+        return text
+    
+    try:
+        tashkeel = TashkeelClass()
+        result = tashkeel.tashkeel(text)
+        return result
+    except:
+        return text  
 
 
 def format_srt_time(seconds):
@@ -91,23 +105,34 @@ def split_text_into_phrases(text, max_words):
 
 
 def process_word_level_subtitles(result, delay):
-    """Process word-by-word subtitles"""
+    """Process word-by-word subtitles with harakat"""
     print(f"\n Processing WORD-LEVEL subtitles...")
+    if ADD_HARAKAT:
+        print("   Adding harakat to Arabic text...")
+    
     subtitles = []
     
     for segment in result['segments']:
         if 'words' in segment and segment['words']:
             for word in segment['words']:
+                text = word['word'].strip()
+             
+                if ADD_HARAKAT:
+                    text = add_arabic_harakat(text)
+                
                 subtitles.append({
-                    'text': word['word'].strip(),
+                    'text': text,
                     'start': round(word['start'] + delay, 2),
                     'end': round(word['end'] + delay, 2),
                     'duration': round(word['end'] - word['start'], 2)
                 })
         else:
-            # Fallback if no word timestamps
+            text = segment['text'].strip()
+            if ADD_HARAKAT:
+                text = add_arabic_harakat(text)
+            
             subtitles.append({
-                'text': segment['text'].strip(),
+                'text': text,
                 'start': round(segment['start'] + delay, 2),
                 'end': round(segment['end'] + delay, 2),
                 'duration': round(segment['end'] - segment['start'], 2)
