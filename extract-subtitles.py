@@ -72,14 +72,13 @@ def transcribe_with_whisper(audio_file, language, task):
     print(f"\n Transcribing audio...")
     print(f"   Language: {language}")
     print(f"   Task: {task}")
-    print(f"   Word-level timestamps: {WORD_LEVEL}")
     print("   This may take several minutes...")
     
     result = model.transcribe(
         audio_file,
         language=language,
         task=task,
-        word_timestamps=WORD_LEVEL,  # ⭐ Enable word-level
+        word_timestamps=WORD_LEVEL, 
         initial_prompt="A clear English translation of Quranic recitation.",
         no_speech_threshold=0.6,
         condition_on_previous_text=False,
@@ -260,7 +259,7 @@ def main():
             # subtitles = process_phrase_level_subtitles(result, SUBTITLE_DELAY, MAX_WORDS_PER_SUBTITLE)
             subtitles = process_full_segment_subtitles(result, SUBTITLE_DELAY)
         
-        print(f"✅ Created {len(subtitles)} subtitles")
+        print(f"Created {len(subtitles)} subtitles")
         
         # Step 4: Preview
         preview_subtitles(subtitles)
@@ -278,13 +277,12 @@ def main():
             print(f"Removed: {audio_file}")
         
         # Success message
-        print("\n" + "="*70)
         print("SUCCESS! Subtitles extracted and saved!")
         print("="*70)
         print(f"Mode: {'WORD-LEVEL' if WORD_LEVEL else 'SEGMENT-LEVEL'}")
         print(f"Total subtitles: {len(subtitles)}")
         print(f"Delay applied: {SUBTITLE_DELAY}s")
-        print("="*70)
+  
         
     except Exception as e:
         print(f"\nError occurred: {e}")
@@ -298,7 +296,6 @@ def main():
                 os.remove("temp_audio.wav")
             except:
                 pass
-
 
 if __name__ == "__main__":
     try:
